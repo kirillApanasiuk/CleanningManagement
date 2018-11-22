@@ -10,7 +10,7 @@ As you follow reading the requirements of this exercise, we want to point out, t
 
 I.E.: You shall design your software, design your rest api, write code, commits, tests, comments, treat any database design or functionality you end up using as you would end up doing in ready-to-release software.
 
-As requirements are stated, we need to write a REST API, that is able to receive orders consisting of following attributes:
+As requirements are stated, we need to develop a REST API, that is able to receive orders consisting of following attributes:
 * Type of commodity (either: power or gas) that this order was placed for.
 * Order-volume (quantity) in MWh. Minimum amount of order is 50 MWh.
 * Order-type. Either: fixed or special-priced.
