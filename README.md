@@ -38,7 +38,7 @@ In terms of pricing:
   * In total a customer can only receive a discount up to 27 %.
 
 Order states:
-* There are three order states
+* There are 3 order states
   * Accepted: Everything went on fine
   * Waiting For Approval: As soon as a customer orders more than 10'000 MWh, certain approvals are required. (Fetching those approvals are not part of this exercie)
   * Failed: E.g.: When the amount of order is below 50 MWh.
