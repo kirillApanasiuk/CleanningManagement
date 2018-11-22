@@ -2,11 +2,11 @@
 #### We believe in enhancing the world of energy production, sales and trading by building pioneering software. 
 
 One of our core software products automates the current way of energy trading. 
-We build service oriented REST APIs allowing 3rd party services and business customers to places their orders. 
+We build service oriented REST APIs allowing 3rd party services and business customers  place their orders. 
 
 Those API-driven solutions, do implement custom user-oriented logic by the way aggregations of orders are made and their price is calculated.
 
-As you continue reading the requirements of this exercise, we want to point out, that you're confronted with a real-world scenario, as such we want you treat this exercise as one. 
+As you continue reading the requirements of this exercise, we want to point out, that you're confronted with a real-world scenario, as such we want you to treat this exercise as one. 
 
 I.e.: You shall design your software, design your rest api, write code, commits, tests, comments, treat any database design or functionality you end up using as you would end up doing in ready-to-release software.
 
