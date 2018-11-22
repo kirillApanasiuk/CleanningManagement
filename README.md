@@ -1,5 +1,5 @@
 # Welcome to Quaternity
-#### We believe in enhancing the world of energy production, sales and trading by building pioneering software. 
+#### Our vision is to enable consumers to satisfy their energy needs consciously, transparently and easily through technology.
 
 One of our core software products automates the current way of energy trading. 
 We build service oriented REST APIs allowing 3rd party services and business customers  place their orders. 
