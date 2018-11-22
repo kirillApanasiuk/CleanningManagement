@@ -2,7 +2,7 @@
 #### We believe in enhancing the world of energy production, sales and trading by building pioneering software. 
 
 One of our core software products automates the current way of energy trading. 
-We need to build service oriented REST APIs allowing 3rd party services and business customers to places their orders. 
+We build service oriented REST APIs allowing 3rd party services and business customers to places their orders. 
 
 Those API-driven solutions, we are building, do implement custom user-oriented logic by the way aggregations of orders are made.
 
