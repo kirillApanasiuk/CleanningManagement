@@ -1,7 +1,7 @@
 # Welcome to Quaternity
 #### Our vision is to enable consumers to satisfy their energy needs consciously, transparently and easily through technology.
 
-One of our core software products automates the current way of energy trading. 
+One of our core software products automates aims to automate the current way energy trading. 
 We build service oriented REST APIs allowing 3rd party services and business customers  place their orders. 
 
 Those API-driven solutions, do implement custom user-oriented logic by the way aggregations of orders are made and their price is calculated.
