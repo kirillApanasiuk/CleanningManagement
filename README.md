@@ -12,7 +12,7 @@ I.e.: You shall design your software, design your rest api, write code, commits,
 
 As requirements are stated, we need to develop a REST API, that is able to receive order which consist of following attributes:
 * Type of commodity. Either: power or gas
-* Order volume (quantity) in MWh. Minimum amount of order is 50 MWh.
+* Order volume (quantity) in MWh. Minimum amount of order is 50 MWh per anno.
 * Order type. Either: fixed or special-priced.
 * An unique customer identification number, so you shall be able to list orders of a certain customer
 * The year of order. i.e. the year in which the order shall be processed. Must not be greater than 10 years from now.
