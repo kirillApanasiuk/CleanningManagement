@@ -46,4 +46,4 @@ Order states:
   
 In summary you shall design and write a REST API, which has at least following endpoints:
 * Endpoint for adding an order to a certain customer
-* Endpoint for listing orders of a certaing customer
+* Endpoint that lists all orders of certain customer
