@@ -30,10 +30,9 @@ plus:
 * price of overall orders made for the certain customer
 
 ## Pricing:
-* Fixed order types:
-  * Orders of type fixed, do always provide the same type of quoting using a static price per MWh
-  * MWh x €
-  * Where the € / MWh equals 1.30 €
+* ### Fixed order types:
+  * Orders of type "fixed" do always provide the same type of quoting using a static price per MWh, € / MWh
+  * Where € / MWh equals 1.30 €
  
 * Special priced orders:
   * price of certain orders are being calculated the same way as fixed order types, with following differences:
