@@ -4,7 +4,7 @@
 One of our core software products aims to automate the current way energy trading. 
 We build service oriented REST APIs allowing 3rd party services and business customers place their orders. 
 
-Those API-driven solutions, do implement custom user-oriented logic by the way aggregations of orders are made and their price is calculated.
+Those API-driven solutions, do implement individual custom user-oriented logic by the way aggregations of orders are made and their price is calculated.
 
 As you continue reading the requirements of this exercise, we want to point out, that you're confronted with a real-world scenario, as such we want you to treat this exercise as one. 
 
