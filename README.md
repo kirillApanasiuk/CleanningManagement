@@ -11,11 +11,11 @@ As you continue reading the requirements of this exercise, we like to point out 
 I.e.: You shall design your software, design your rest api, write code, commits, tests, comments, treat any database design or functionality you end up using as you would end up doing in your job.
 
 ## Order information
-As requirements are stated, we need to develop a REST API, that is able to receive orders, which consists of following attributes:
+As requirements are stated, we need to develop a REST API, that is able to receive orders, which do consist of following attributes:
 * Type of commodity. Either power or gas
-* Order volume (quantity) in MWh. Minimum amount of order is 50 MWh per anno.
-* Order type. Either: fixed or special-priced.
-* An unique customer identification number, so you shall be able to list orders of a certain customer
+* Order volume (i.e. quantity) in MWh. Minimum amount of order is 50 MWh per anno.
+* Order type. Either "fixed" or special-priced.
+* An unique customer identification number, so you shall be able to list orders of a certain customer.
 * The year of order. i.e. the year in which the order shall be processed. Must not be greater than 10 years from now.
 
 When orders are placed. The API should provide response to your API users informing them about:
