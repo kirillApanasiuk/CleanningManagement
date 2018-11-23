@@ -21,9 +21,10 @@ As requirements are stated, we need to develop a REST API, that is able to recei
 When orders are placed. The API should provide response to your API users informing them about:
 * The order you have accepted, i.e. returning the same order information
 
-plus:
+_plus:_
 
-* the new created order Id
+* created order Id
+* unique customer Id
 * current order state
 * current order price
 * sum of overall order quantities made for the certain customer
