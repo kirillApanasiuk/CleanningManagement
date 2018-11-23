@@ -1,14 +1,14 @@
 # Welcome to Quaternity
-#### Our vision is to enable consumers to satisfy their energy needs consciously, transparently and easily through technology.
+#### Our vision is to enable consumers satisfy their energy needs consciously, transparently and easily through technology.
 
-One of our core software products aims to automate the current way energy is being trading. 
+One of our core software products aims to automate the current way energy is being traded. 
 We build service oriented REST APIs allowing 3rd party services and business customers place orders. 
 
-Those API-driven solutions, do implement individual custom user-oriented logic by the way aggregations of orders are made and their price is calculated.
+Those API-driven solutions, do implement a custom user-oriented logic by the way aggregations of orders are made and their price is calculated.
 
-As you continue reading the requirements of this exercise, we want to point out, that you're confronted with a real-world scenario, as such we want you to treat this exercise as one. 
+As you continue reading the requirements of this exercise, we like to point out to you, that you're confronted with a real-world scenario, as such we want you to treat this exercise as one. 
 
-I.e.: You shall design your software, design your rest api, write code, commits, tests, comments, treat any database design or functionality you end up using as you would end up doing in ready-to-release software.
+I.e.: You shall design your software, design your rest api, write code, commits, tests, comments, treat any database design or functionality you end up using as you would end up doing in your job.
 
 As requirements are stated, we need to develop a REST API, that is able to receive orders, which consists of following attributes:
 * Type of commodity. Either: power or gas
@@ -18,8 +18,10 @@ As requirements are stated, we need to develop a REST API, that is able to recei
 * The year of order. i.e. the year in which the order shall be processed. Must not be greater than 10 years from now.
 
 When orders are placed. The API should provide response to your API users informing them about:
-The order you have accepted, i.e. returning the same order information,
+* The order you have accepted, i.e. returning the same order information
+
 plus:
+
 * the new created order Id
 * current order state
 * current order price
