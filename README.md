@@ -34,18 +34,18 @@ plus:
   * Orders of type "fixed" do always provide the same type of quoting using a static price per MWh, € / MWh
   * Where € / MWh equals 1.30 €
  
-* Special priced orders:
+* ### Special priced orders:
   * price of certain orders are being calculated the same way as fixed order types, with following differences:
   * The price of all orders up to the total amount of 500MWh is about: 1.50 € / MWh
   * Every 500th MWh ordered, a customer receives 3 percent discount. 
   * In total a customer can only receive a discount up to 27 %.
 
 ## Order states
-Order states:
-* There are 3 order states
-  * Accepted: Everything went on fine
-  * Waiting For Approval: As soon as a customer orders more than 10'000 MWh, certain approvals are required. (Fetching those approvals are not part of this exercise)
-  * Failed: E.g.: When the amount of order is below 50 MWh.
+
+* ### Orders can end up in following three states
+  * **Accepted**: Everything went on fine
+  * **Waiting For Approval**: As soon as a customer orders more than 10'000 MWh, certain approvals are required. (Fetching those approvals are not part of this exercise)
+  * **Failed**: E.g.: When the amount of order is below 50 MWh.
   
 ## Endpoints
 In summary you shall design and write a REST API, which has at least following endpoints:
