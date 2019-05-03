@@ -18,17 +18,18 @@ As requirements are stated, we need to develop a REST API, that is able to recei
 * An unique customer identification number, so you shall be able to list orders of a certain customer.
 * The year of order. i.e. the year in which the order shall be processed. Must not be greater than 10 years from now.
 
+(Any customer information beyond the identification number is not part of this exercise.)
+
 When orders are placed. The API should provide a response to your API users informing them about:
 * The order you have accepted, i.e. returning the same order information
 
 _plus:_
 
 * created order Id
-* unique customer Id
 * current order state
-* current order price
+* order price
 * sum of overall order quantities made for the certain customer
-* price of overall orders made for the certain customer
+* total price of all orders made for the certain customer
 
 ## Pricing:
 * ### Fixed order types:
@@ -37,8 +38,8 @@ _plus:_
  
 * ### Special priced orders:
   * prices of certain orders are being calculated the same way as fixed order types, with following differences:
-  * The price of all orders up to the total amount of 500MWh is about: 1.50 € / MWh
-  * Every 500th MWh ordered, a customer receives 3 percent discount. 
+  * The price of all orders up to the total amount of 500MWh is: 1.50 € / MWh
+  * Every 500th MWh ordered at the special price, a customer receives 3 percent discount. 
   * In total a customer can only receive a discount up to 27 %.
 
 ## Order states
