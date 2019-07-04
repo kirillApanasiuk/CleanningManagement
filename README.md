@@ -32,6 +32,8 @@ __plus:__
 * sum of overall order quantities made for the certain customer
 * total price of all orders made for the certain customer
 
+<div style="page-break-after: always;"></div>
+
 ## Order types:
 * ### Fixed price:
   * Orders of type "fixed" do always provide the same type of quoting using a static price per MWh, € / MWh
