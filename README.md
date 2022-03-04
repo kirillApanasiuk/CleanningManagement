@@ -30,7 +30,7 @@ A cleaning plan consists of following attributes:
 * An __optional__ description with a max. length of 512 characters.
 
 ---
-# Cleaning Plan Endpoints
+## Cleaning Plan Endpoints
 
 ## Endpoint: Create Cleaning Plan
 This endpoint should allow clients to create a cleaning plan. Using the constraints 
