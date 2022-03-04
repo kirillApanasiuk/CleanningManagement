@@ -1,4 +1,4 @@
-# Welcome to Quaternity
+# Welcome to NOUS
 #### Our vision is to enable consumers to satisfy their cleaning operations needs consciously, transparently and easily through technology.
 
 ## Introduction
