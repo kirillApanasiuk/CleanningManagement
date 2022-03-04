@@ -10,7 +10,9 @@ Your task is to build a REST API, that allows the creation of a cleaning plans s
 
 You have to figure out which http methods to use, how to configure the routes and how to store the data. 
 
+The provided project is already preconfigured and contains a setup that can be used. 
 You are expected to use asp.net core 5.0, entityframework core 5.0 and therefore store your data in a database.
+You can reuse the DbContext in `CleaningManagement.DAL\CleaningManagementDbContext.cs` that uses an in memory database, but you're allowed to use a different setup if prefered
 
 ## Cleaning Plan, Creation Endpoint
 This endpoint should allow clients to create a cleaning plan.

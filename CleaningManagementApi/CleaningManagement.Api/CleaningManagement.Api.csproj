@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CleaningManagement.DAL\CleaningManagement.DAL.csproj" />
+    <ProjectReference Include="..\CleaningManagement.DAL\CleaningManagement.DAL.csproj" />
   </ItemGroup>
 
 </Project>
