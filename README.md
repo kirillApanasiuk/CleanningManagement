@@ -1,7 +1,7 @@
 # NOUS Coding challenge
 
 ## Introduction
-One of our core SaaS-Solutions aims to automate the way cleaning processes are organized. 
+Our SaaS-Solution aims to automate the way cleaning processes are organized. 
 We build service oriented REST APIs, which allow customers to create cleaning plans.
 
 As you continue reading the requirements of this assessment, we like to point out that we expect you to treat it like a real world task. You shall design your API, code, commits, tests, comments and database like you'd be doing in your job.
