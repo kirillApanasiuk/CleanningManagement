@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.106
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleaningManagement.Api", "CleaningManagement.Api\CleaningManagement.Api.csproj", "{7E14B7CE-599B-4242-B8A8-B921D62E0ED6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleaningManagement.Api", "CleaningManagement.Api\CleaningManagement.Api.csproj", "{7E14B7CE-599B-4242-B8A8-B921D62E0ED6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleaningManagement.DAL", "..\CleaningManagement.DAL\CleaningManagement.DAL.csproj", "{A6D64B2C-8525-4744-BCB0-1FB0DB2EFBCE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7E14B7CE-599B-4242-B8A8-B921D62E0ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E14B7CE-599B-4242-B8A8-B921D62E0ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E14B7CE-599B-4242-B8A8-B921D62E0ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D64B2C-8525-4744-BCB0-1FB0DB2EFBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D64B2C-8525-4744-BCB0-1FB0DB2EFBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D64B2C-8525-4744-BCB0-1FB0DB2EFBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D64B2C-8525-4744-BCB0-1FB0DB2EFBCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,6 +4,9 @@
     <TargetFramework>netcoreapp5.0</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <UserSecretsId>8fe8bc6f-d72b-40cf-9191-bbacc48bd2e6</UserSecretsId>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,10 +22,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\CleaningManagement.DAL\CleaningManagement.DAL.csproj" />
   </ItemGroup>
 
 </Project>

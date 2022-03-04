@@ -1,15 +1,16 @@
 # Welcome to NOUS
-#### Our vision is to enable consumers to satisfy their cleaning operations needs consciously, transparently and easily through technology.
 
 ## Introduction
 One of our core SaaS-Solutions aims to automate the way cleaning processes are organized. 
-We build service oriented REST APIs which allow business customers to create cleaning plans and organize cleaning activities.
+We build service oriented REST APIs, which allow customers to create cleaning plans.
 
-As you continue reading the requirements of this exercise, we like to point out that you're confronted with a real-world scenario, as such we want you to treat this exercise as one. You shall design your software, rest api, code, commits, tests, comments and treat any database design you end up using as you would do in your job.
+As you continue reading the requirements of this exercise, we like to point out that we expect you to treat this exercise as a real world exercise. You shall design your software, rest api, code, commits, tests, comments and treat any database design you end up using as you would do in your job.
 
-Your task is now to build a REST API, that allows the creation of a cleaning plans, assignment of cleaning activities to such a plan and subsequently the manipulation of those activities.
+Your task is to build a REST API, that allows the creation of a cleaning plans subsequently the manipulation of those.
 
 You have to figure out which http methods to use, how to configure the routes and how to store the data. 
+
+You are expected to use asp.net core 5.0, entityframework core 5.0 and therefore store your data in a database.
 
 ## Cleaning Plan, Creation Endpoint
 This endpoint should allow clients to create a cleaning plan.

@@ -1,14 +1,17 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace CleaningManagement.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/cleaningplans")]
     public class CleaningPlansController : ControllerBase
     {
+
+        [HttpGet]
+        public IActionResult GetCleaningPlans() => Ok();
+
         /*
-        * TODO: Provide your implementation.
-        */
+         * TODO: Provide your implementation.
+         */
     }
 }
