@@ -6,12 +6,10 @@ We build service oriented REST APIs, which allow customers to create cleaning pl
 
 As you continue reading the requirements of this assessment, we like to point out that we expect you to treat it like a real world task. You shall design your API, code, commits, tests, comments and database like you'd be doing in your job.
 
-## REST API, Project Requirements & Setup 
+## Requirements
 Your task is to build a REST API, that allows the creation of a cleaning plans and subsequently the manipulation of those. 
 
 This repository provides a project that is already preconfigured and contains a setup that can be used. 
-
-## Requirements
 You are expected to use asp.net core 5.0, entityframework core 5.0 and therefore store your data in a database. (e.g.: sqlite, in-memory)
 
 ### asp.net core controller
