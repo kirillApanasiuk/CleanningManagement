@@ -26,7 +26,7 @@ There's an empty controller in the project you can use to add your endpoints. Yo
 **An endpoint must always validate the provided data and respond with adequate http status codes in case of success or error.**
 
 ### Database, DbContext, ef core
-You can reuse the DbContext in `CleaningManagement.DAL\CleaningManagementDbContext.cs` that uses an in memory database, but you're allowed to use a different setup if prefered
+You can reuse the DbContext in `CleaningManagement.DAL\CleaningManagementDbContext.cs` that uses an in memory database, but you're allowed to use a different setup if prefered.
 
 ---
 ## Cleaning Plan Model
@@ -39,6 +39,8 @@ A cleaning plan consists of following attributes and constraints:
 
 ## Endpoint: Create Cleaning Plan
 Provide an endpoint that allows a client to create a cleaning plan. Don't forget to take all model constraints into account, e.g. title length. Please validate any request accordingly.
+
+We expect you to store the cleaning plan in the provided in-memory database using ef core.
 
 Here's an example for **request** body:
 ```
@@ -62,6 +64,7 @@ Example response body:
 
 ### Endpoint: List Cleaning Plans
 This endpoint should provide a list of all cleaningplans using a provided `customerId`. 
+
 An empty response body should be provided, if a `customerId` is being used, that does not exist.
 
 Example response body:
