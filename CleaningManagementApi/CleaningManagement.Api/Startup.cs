@@ -1,8 +1,12 @@
-﻿using CleaningManagement.DAL;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using CleanningManagement.Infrastructure.Data.DbContexts;
+using CleaningManagement.Application;
+using CleaningManagement.Application.UseCases.CleanningPlan.BusinessLogic;
 
 namespace CleaningManagement.Api
 {
@@ -19,12 +23,37 @@ namespace CleaningManagement.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<CleaningManagementDbContext>();
+
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Cleanning Plan web API",
+                    Description = "Service oriented REST APIs, which allow customers to create cleaning plans"
+                });
+            });
+
+            services.AddScoped<ICleanningPlanService, CleanningPlanService>();
+
+            services.AddDbContext<CleanningManagementDbContext>(opts =>
+                opts.UseSqlServer(Configuration.GetConnectionString("SqlServerDbProviderCMDataBase"),
+                x => x.MigrationsAssembly("CleanningManagement.DAL"))
+                .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "v1");
+                options.RoutePrefix = string.Empty;
+            });
+
             app.UseHttpsRedirection();
             app.UseRouting();
 
