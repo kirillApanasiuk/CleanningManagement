@@ -10,9 +10,9 @@ namespace CleaningManagement.Application.UseCases.CleanningPlan.BusinessLogic
 {
     public interface ICleanningPlanService
     {
-        Task<CleanningPlanDto> CreateCleanningPlanAsync(CreateCleanningPlanDto createCleanningPlanDto);
-        Task<IEnumerable<CleanningPlanDto>> GetCleanningPlansAsync(int customerId);
-        Task<bool> DeleteCleanningPlanAsync(Guid cleanningPlanId);
-        Task<CleanningPlanDto> UpdateCleanningPlan(UpdateCleanningPlanDto updateCleanningPlanDto);
+        Task<CleanningPlanDto> CreateAsync(CreateCleanningPlanDto createCleanningPlanDto);
+        Task<IEnumerable<CleanningPlanDto>> GetByCustomerIdAsync(int customerId);
+        Task<bool> DeleteAsync(Guid cleanningPlanId);
+        Task<CleanningPlanDto> Update(UpdateCleanningPlanDto updateCleanningPlanDto);
     }
 }

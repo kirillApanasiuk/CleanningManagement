@@ -19,7 +19,7 @@ namespace CleaningManagement.Application
             _cleanningManagementDbContext = cleanningManagementDbContext;
         }
 
-        public async Task<CleanningPlanDto> CreateCleanningPlanAsync(CreateCleanningPlanDto createCleanningPlanDto)
+        public async Task<CleanningPlanDto> CreateAsync(CreateCleanningPlanDto createCleanningPlanDto)
         {
             var newCleanningPlan = new CleanningPlan
             {
@@ -43,9 +43,12 @@ namespace CleaningManagement.Application
             return cleanningPlanDto;
         }
 
-        public async Task<bool> DeleteCleanningPlanAsync(Guid cleanningPlanId)
+        public async Task<bool> DeleteAsync(Guid cleanningPlanId)
         {
-            var cleanningPlan = await _cleanningManagementDbContext.CleanningPlans.AsTracking().FirstOrDefaultAsync(x => x.Id == cleanningPlanId);
+            var cleanningPlan = await _cleanningManagementDbContext.CleanningPlans
+                .AsTracking()
+                .FirstOrDefaultAsync(x => x.Id == cleanningPlanId);
+
             if (cleanningPlan == null)
                 return false;
 
@@ -56,9 +59,10 @@ namespace CleaningManagement.Application
             return true;
         }
 
-        public async Task<IEnumerable<CleanningPlanDto>> GetCleanningPlansAsync(int customerId)
+        public async Task<IEnumerable<CleanningPlanDto>> GetByCustomerIdAsync(int customerId)
         {
-            var plansDtos = await _cleanningManagementDbContext.CleanningPlans.Where(x => x.CustomerId == customerId)
+            var plansDtos = await _cleanningManagementDbContext.CleanningPlans
+                .Where(x => x.CustomerId == customerId)
                 .Select(x => new CleanningPlanDto
                 {
                     Id = x.Id,
@@ -72,7 +76,7 @@ namespace CleaningManagement.Application
             return plansDtos;
         }
 
-        public async Task<CleanningPlanDto> UpdateCleanningPlan(UpdateCleanningPlanDto updateCleanningPlanDto)
+        public async Task<CleanningPlanDto> Update(UpdateCleanningPlanDto updateCleanningPlanDto)
         {
             var cleanningPlan = await _cleanningManagementDbContext
                 .CleanningPlans

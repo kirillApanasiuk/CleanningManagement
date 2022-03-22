@@ -20,7 +20,8 @@ namespace CleaningManagement.Api.ValidationRules.CleanningPlan
             When(createCPDto => !string.IsNullOrEmpty(createCPDto.Description), () => 
             {
                 RuleFor(createCPDto => createCPDto.Description)
-                   .MaximumLength(512);
+                   .MaximumLength(512)
+                   .WithMessage("Description should be less that 512");
             });
         }
     }

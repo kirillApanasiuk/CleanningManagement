@@ -20,7 +20,7 @@ namespace CleaningManagement.Api.Controllers
         [HttpGet("/api/customers/{customerId}/plans")]
         public async Task<IActionResult> GetPlansByCustomerId(int customerId)
         {
-            var plansDtos = await _cleanningPlanService.GetCleanningPlansAsync(customerId);
+            var plansDtos = await _cleanningPlanService.GetByCustomerIdAsync(customerId);
 
             return Ok(plansDtos);
         }
@@ -28,7 +28,7 @@ namespace CleaningManagement.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id )
         {
-            var result = await _cleanningPlanService.DeleteCleanningPlanAsync(id);
+            var result = await _cleanningPlanService.DeleteAsync(id);
 
             return Ok(result);
         }
@@ -42,7 +42,7 @@ namespace CleaningManagement.Api.Controllers
                 return BadRequest("Provide valid Id");
             }
 
-            var cleanningPlanDto = await _cleanningPlanService.UpdateCleanningPlan(new UpdateCleanningPlanDto(id, updateCleanningPlanDto));
+            var cleanningPlanDto = await _cleanningPlanService.Update(new UpdateCleanningPlanDto(id, updateCleanningPlanDto));
 
             return Ok(cleanningPlanDto);
         }
@@ -54,7 +54,7 @@ namespace CleaningManagement.Api.Controllers
                 return BadRequest();
             }
 
-            var resultDto =  await _cleanningPlanService.CreateCleanningPlanAsync(createCleanningPlanDto);
+            var resultDto =  await _cleanningPlanService.CreateAsync(createCleanningPlanDto);
             return Ok(resultDto);
         }
     }
