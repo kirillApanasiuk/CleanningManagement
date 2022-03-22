@@ -1,4 +1,5 @@
 ﻿using CleaningManagement.Application.UseCases.CleanningPlan.DTOs;
+using CleanningManagement.Resources;
 using FluentValidation;
 
 namespace CleaningManagement.Api.ValidationRules.CleanningPlan
@@ -8,20 +9,21 @@ namespace CleaningManagement.Api.ValidationRules.CleanningPlan
         public CreateCleanningPlanValidator()
         {
             RuleFor(createCPDto => createCPDto.Title)
-                .Cascade(CascadeMode.StopOnFirstFailure)
-                .NotEmpty()
-                .WithMessage("Title field is required")
-                .MaximumLength(256).WithMessage("Title field length should be less than 256");
+                  .Cascade(CascadeMode.StopOnFirstFailure)
+                  .NotEmpty()
+                  .WithMessage(string.Format(ValidationErrors.FieldRequired, nameof(CreateCleanningPlanDto.Title)))
+                  .MaximumLength(256)
+                  .WithMessage(string.Format(ValidationErrors.MaxLength, nameof(CreateCleanningPlanDto.Title), 256));
 
             RuleFor(createCPDto => createCPDto.CustomerId)
                 .NotEmpty()
-                .WithMessage("Customer Identification number should be not empty");
+               .WithMessage(string.Format(ValidationErrors.NotDefaultTypeValue, nameof(CreateCleanningPlanDto.CustomerId), int.MinValue));
 
-            When(createCPDto => !string.IsNullOrEmpty(createCPDto.Description), () => 
+            When(createCPDto => !string.IsNullOrEmpty(createCPDto.Description), () =>
             {
                 RuleFor(createCPDto => createCPDto.Description)
                    .MaximumLength(512)
-                   .WithMessage("Description should be less that 512");
+                   .WithMessage(string.Format(ValidationErrors.MaxLength, nameof(CreateCleanningPlanDto.Description), 512));
             });
         }
     }

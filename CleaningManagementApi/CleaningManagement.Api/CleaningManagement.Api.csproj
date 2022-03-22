@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CleaningManagement.Application\CleaningManagement.Application.csproj" />
     <ProjectReference Include="..\CleanningManagement.Infrastructure\CleanningManagement.Infrastructure.csproj" />
+    <ProjectReference Include="..\CleanningManagement.Resources\CleanningManagement.Resources.csproj" />
   </ItemGroup>
 
 </Project>

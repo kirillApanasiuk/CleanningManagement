@@ -1,5 +1,6 @@
 ﻿using CleaningManagement.Api.ValidationRules.CleanningPlan;
 using CleaningManagement.Application.UseCases.CleanningPlan.DTOs;
+using CleanningManagement.Resources;
 using System;
 using System.Linq;
 using Xunit;
@@ -17,7 +18,9 @@ namespace CleanningManagement.Api.UnitTests.ValidationRules.CleanningPlan
             //act
             var validationResult = _validator.Validate(cleanningPlanDtoWithEmptyTitle);
             //assert
-            Assert.Contains(validationResult.Errors.Select(x => x.ErrorMessage), x => x == "Title field is required");
+            Assert.Contains(validationResult.Errors
+                .Select(x => x.ErrorMessage), 
+                x => x == string.Format(ValidationErrors.FieldRequired, nameof(CreateCleanningPlanDto.Title)));
         }
 
         [Fact]
@@ -29,7 +32,7 @@ namespace CleanningManagement.Api.UnitTests.ValidationRules.CleanningPlan
             //act
             var validationResult = _validator.Validate(cleanningPlanDtoWithGreaterTitleStringLength);
             //assert
-            Assert.Contains(validationResult.Errors.Select(x => x.ErrorMessage), x => x == "Title field length should be no more than 256");
+            Assert.Contains(validationResult.Errors.Select(x => x.ErrorMessage), x => x == string.Format(ValidationErrors.MaxLength, nameof(CreateCleanningPlanDto.Title), 256));
         }
         
         [Fact]
@@ -40,7 +43,9 @@ namespace CleanningManagement.Api.UnitTests.ValidationRules.CleanningPlan
             //act
             var validationResult = _validator.Validate(cleanningPlanDtoWithEmptyCustomerId);
             //assert
-            Assert.Contains(validationResult.Errors.Select(x => x.ErrorMessage), x => x == "Customer Identification number should be not empty");
+            Assert.Contains(validationResult.Errors
+                .Select(x => x.ErrorMessage),
+                x => x == string.Format(ValidationErrors.NotDefaultTypeValue, nameof(CreateCleanningPlanDto.CustomerId), int.MinValue));
         }
 
         [Fact]
@@ -63,7 +68,9 @@ namespace CleanningManagement.Api.UnitTests.ValidationRules.CleanningPlan
             //act
             var validationResult = _validator.Validate(cleanningPlanDtoWithGreaterTitleStringLength);
             //assert
-            Assert.Contains(validationResult.Errors.Select(x => x.ErrorMessage), x => x == "Title field length should be no more than 512");
+            Assert.Contains(validationResult.Errors
+                .Select(x => x.ErrorMessage), 
+                x => x == string.Format(ValidationErrors.MaxLength, nameof(CreateCleanningPlanDto.Description), 512));
         }
     }
 }
