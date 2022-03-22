@@ -10,6 +10,8 @@ using CleaningManagement.Application.UseCases.CleanningPlan.BusinessLogic;
 using FluentValidation.AspNetCore;
 using System.Reflection;
 using CleaningManagement.Api.ValidationRules.CleanningPlan;
+using System.IO;
+using System;
 
 namespace CleaningManagement.Api
 {
@@ -39,6 +41,9 @@ namespace CleaningManagement.Api
                     Title = "Cleanning Plan web API",
                     Description = "Service oriented REST APIs, which allow customers to create cleaning plans"
                 });
+
+                var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
             });
 
             services.AddScoped<ICleanningPlanService, CleanningPlanService>();
