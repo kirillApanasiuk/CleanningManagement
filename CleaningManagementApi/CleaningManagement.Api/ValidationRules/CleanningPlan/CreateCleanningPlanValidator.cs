@@ -17,7 +17,7 @@ namespace CleaningManagement.Api.ValidationRules.CleanningPlan
 
             RuleFor(createCPDto => createCPDto.CustomerId)
                 .NotEmpty()
-               .WithMessage(string.Format(ValidationErrors.NotDefaultTypeValue, nameof(CreateCleanningPlanDto.CustomerId), int.MinValue));
+               .WithMessage(string.Format(ValidationErrors.NotDefaultTypeValue, nameof(CreateCleanningPlanDto.CustomerId), 0));
 
             When(createCPDto => !string.IsNullOrEmpty(createCPDto.Description), () =>
             {

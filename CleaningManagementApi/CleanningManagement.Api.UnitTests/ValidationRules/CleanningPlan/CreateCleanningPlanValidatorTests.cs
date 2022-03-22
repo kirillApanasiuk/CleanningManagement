@@ -19,7 +19,7 @@ namespace CleanningManagement.Api.UnitTests.ValidationRules.CleanningPlan
             var validationResult = _validator.Validate(cleanningPlanDtoWithEmptyTitle);
             //assert
             Assert.Contains(validationResult.Errors
-                .Select(x => x.ErrorMessage), 
+                .Select(x => x.ErrorMessage),
                 x => x == string.Format(ValidationErrors.FieldRequired, nameof(CreateCleanningPlanDto.Title)));
         }
 
@@ -34,25 +34,25 @@ namespace CleanningManagement.Api.UnitTests.ValidationRules.CleanningPlan
             //assert
             Assert.Contains(validationResult.Errors.Select(x => x.ErrorMessage), x => x == string.Format(ValidationErrors.MaxLength, nameof(CreateCleanningPlanDto.Title), 256));
         }
-        
+
         [Fact]
         public void CustomerId_IsEmptyOrDefault_ValidationFails()
         {
             //arrange 
-            var cleanningPlanDtoWithEmptyCustomerId = new CreateCleanningPlanDto { CustomerId = int.MinValue };
+            var cleanningPlanDtoWithEmptyCustomerId = new CreateCleanningPlanDto { CustomerId = 0, Title = "Test title" };
             //act
             var validationResult = _validator.Validate(cleanningPlanDtoWithEmptyCustomerId);
             //assert
             Assert.Contains(validationResult.Errors
                 .Select(x => x.ErrorMessage),
-                x => x == string.Format(ValidationErrors.NotDefaultTypeValue, nameof(CreateCleanningPlanDto.CustomerId), int.MinValue));
+                x => x == string.Format(ValidationErrors.NotDefaultTypeValue, nameof(CreateCleanningPlanDto.CustomerId), 0));
         }
 
         [Fact]
         public void Description_IsOptional_ValidationPass()
         {
             //arrange 
-            var cleanningPlanDtoWithEmptyCustomerId = new CreateCleanningPlanDto { Title="Test title",CustomerId = 1 };
+            var cleanningPlanDtoWithEmptyCustomerId = new CreateCleanningPlanDto { Title = "Test title", CustomerId = 1 };
             //act
             var validationResult = _validator.Validate(cleanningPlanDtoWithEmptyCustomerId);
             //assert
@@ -69,7 +69,7 @@ namespace CleanningManagement.Api.UnitTests.ValidationRules.CleanningPlan
             var validationResult = _validator.Validate(cleanningPlanDtoWithGreaterTitleStringLength);
             //assert
             Assert.Contains(validationResult.Errors
-                .Select(x => x.ErrorMessage), 
+                .Select(x => x.ErrorMessage),
                 x => x == string.Format(ValidationErrors.MaxLength, nameof(CreateCleanningPlanDto.Description), 512));
         }
     }

@@ -9,10 +9,6 @@ namespace CleaningManagement.Api.ValidationRules.CleanningPlan
     {
         public UpdateCleanningPlanValidator()
         {
-            RuleFor(updateCleanningPlanDto => updateCleanningPlanDto.Id)
-                .NotEmpty()
-                .WithMessage(string.Format(ValidationErrors.NotDefaultTypeValue, nameof(UpdateCleanningPlanDto.Id), Guid.Empty));
-
             RuleFor(createCPDto => createCPDto.Title)
                    .Cascade(CascadeMode.StopOnFirstFailure)
                    .NotEmpty()
