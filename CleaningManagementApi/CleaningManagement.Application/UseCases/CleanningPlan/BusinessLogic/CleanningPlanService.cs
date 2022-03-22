@@ -10,30 +10,17 @@ namespace CleaningManagement.Application
     public class CleanningPlanService : ICleanningPlanService
     {
         private readonly CleanningManagementDbContext _cleanningManagementDbContext;
-        private readonly IValidator<CreateCleanningPlanDto> _createCleanningPlanValidator;
-        private readonly IValidator<UpdateCleanningPlanDto> _updateCleanningPlanValidator;
 
         public CleanningPlanService(
-            CleanningManagementDbContext cleanningManagementDbContext,
-            IValidator<CreateCleanningPlanDto> createCleanningPlanValidator,
-            IValidator<UpdateCleanningPlanDto> updateCleanningPlanValidator
+            CleanningManagementDbContext cleanningManagementDbContext
+
             )
         {
             _cleanningManagementDbContext = cleanningManagementDbContext;
-            _createCleanningPlanValidator = createCleanningPlanValidator;
-            _updateCleanningPlanValidator = updateCleanningPlanValidator;
         }
 
         public async Task<CleanningPlanDto> CreateCleanningPlanAsync(CreateCleanningPlanDto createCleanningPlanDto)
         {
-            var validationResult = _createCleanningPlanValidator.Validate(createCleanningPlanDto);
-
-            if (!validationResult.IsValid)
-            {
-                //TODO
-                return null;
-            }
-
             var newCleanningPlan = new CleanningPlan
             {
                 CustomerId = createCleanningPlanDto.CustomerId,
@@ -44,8 +31,8 @@ namespace CleaningManagement.Application
             _cleanningManagementDbContext.Add(newCleanningPlan);
             await _cleanningManagementDbContext.SaveChangesAsync();
 
-            var cleanningPlanDto = new CleanningPlanDto 
-            { 
+            var cleanningPlanDto = new CleanningPlanDto
+            {
                 Id = newCleanningPlan.Id,
                 CreatedAt = newCleanningPlan.CreatedAt,
                 CustomerId = createCleanningPlanDto.CustomerId,
@@ -71,8 +58,6 @@ namespace CleaningManagement.Application
 
         public async Task<IEnumerable<CleanningPlanDto>> GetCleanningPlansAsync(int customerId)
         {
-            //TODO validation
-
             var plansDtos = await _cleanningManagementDbContext.CleanningPlans.Where(x => x.CustomerId == customerId)
                 .Select(x => new CleanningPlanDto
                 {
@@ -89,20 +74,13 @@ namespace CleaningManagement.Application
 
         public async Task<CleanningPlanDto> UpdateCleanningPlan(UpdateCleanningPlanDto updateCleanningPlanDto)
         {
-
-            var validationResult = _updateCleanningPlanValidator.Validate(updateCleanningPlanDto);
-            if (!validationResult.IsValid)
-            {
-                return null;
-            }
-            
             var cleanningPlan = await _cleanningManagementDbContext
                 .CleanningPlans
                 .AsTracking()
                 .FirstOrDefaultAsync(x => x.Id == updateCleanningPlanDto.Id);
 
             if (cleanningPlan == null)
-                new CleanningPlanDto();
+                throw new Exception($"Cleannig plan with given {updateCleanningPlanDto.Id} does not exist");
 
             cleanningPlan.Title = updateCleanningPlanDto.Title;
             cleanningPlan.Description = updateCleanningPlanDto.Description;
@@ -110,12 +88,13 @@ namespace CleaningManagement.Application
 
             await _cleanningManagementDbContext.SaveChangesAsync();
 
-            var cleanningPlanDto = new CleanningPlanDto { 
-                Id = cleanningPlan.Id, 
+            var cleanningPlanDto = new CleanningPlanDto
+            {
+                Id = cleanningPlan.Id,
                 CreatedAt = cleanningPlan.CreatedAt,
-                CustomerId= cleanningPlan.CustomerId,
-                Description= cleanningPlan.Description,
-                Title   = cleanningPlan.Title
+                CustomerId = cleanningPlan.CustomerId,
+                Description = cleanningPlan.Description,
+                Title = cleanningPlan.Title
             };
 
             return cleanningPlanDto;

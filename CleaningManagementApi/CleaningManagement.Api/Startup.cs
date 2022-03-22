@@ -9,7 +9,7 @@ using CleaningManagement.Application;
 using CleaningManagement.Application.UseCases.CleanningPlan.BusinessLogic;
 using FluentValidation.AspNetCore;
 using System.Reflection;
-using CleaningManagement.Application.UseCases.CleanningPlan.ValidationRules.CleanningPlan;
+using CleaningManagement.Api.ValidationRules.CleanningPlan;
 
 namespace CleaningManagement.Api
 {
@@ -26,9 +26,8 @@ namespace CleaningManagement.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers()
-                .AddFluentValidation(fv => {
-                    fv.RegisterValidatorsFromAssemblyContaining<CreateCleanningPlanValidator>();
-                    fv.RegisterValidatorsFromAssemblyContaining<UpdateCleanningPlanValidator>();
+                .AddFluentValidation(opts => {
+                    opts.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
                 }
                );
 

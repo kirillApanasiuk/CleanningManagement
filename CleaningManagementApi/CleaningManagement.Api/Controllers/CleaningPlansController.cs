@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CleaningManagement.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/cleanning-plans")]
     public class CleaningPlansController : ControllerBase
     {
         private readonly ICleanningPlanService _cleanningPlanService;
@@ -17,8 +17,8 @@ namespace CleaningManagement.Api.Controllers
             _cleanningPlanService = cleanningPlanService;
         }
 
-        [HttpGet("customers/{customerId}")]
-        public async Task<IActionResult> AllPlans(int customerId)
+        [HttpGet("/api/customers/{customerId}/plans")]
+        public async Task<IActionResult> GetPlansByCustomerId(int customerId)
         {
             var plansDtos = await _cleanningPlanService.GetCleanningPlansAsync(customerId);
 
@@ -26,7 +26,7 @@ namespace CleaningManagement.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCleanningPlan(Guid id )
+        public async Task<IActionResult> Delete(Guid id )
         {
             var result = await _cleanningPlanService.DeleteCleanningPlanAsync(id);
 
@@ -35,16 +35,25 @@ namespace CleaningManagement.Api.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateCleanningPlan(Guid id,[FromBody] UpdateCleanningPlanRequestDto updateCleanningPlanDto)
+        public async Task<IActionResult> Update(Guid id,[FromBody] UpdateCleanningPlanRequestDto updateCleanningPlanDto)
         {
+            if (id == Guid.Empty)
+            {
+                return BadRequest("Provide valid Id");
+            }
 
             var cleanningPlanDto = await _cleanningPlanService.UpdateCleanningPlan(new UpdateCleanningPlanDto(id, updateCleanningPlanDto));
 
             return Ok(cleanningPlanDto);
         }
         [HttpPost]
-        public async Task<IActionResult> CreateCleanningPlan([FromBody] CreateCleanningPlanDto createCleanningPlanDto) 
+        public async Task<IActionResult> Create([FromBody] CreateCleanningPlanDto createCleanningPlanDto) 
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             var resultDto =  await _cleanningPlanService.CreateCleanningPlanAsync(createCleanningPlanDto);
             return Ok(resultDto);
         }

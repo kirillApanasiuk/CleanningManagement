@@ -1,6 +1,6 @@
 ﻿namespace CleaningManagement.Application.UseCases.CleanningPlan.DTOs
 {
-    public class UpdateCleanningPlanDto: UpdateCleanningPlanRequestDto
+    public class UpdateCleanningPlanDto : UpdateCleanningPlanRequestDto
     {
         public Guid Id { get; set; }
         public UpdateCleanningPlanDto(Guid id, UpdateCleanningPlanRequestDto updateCleanningPlanRequestDto)
