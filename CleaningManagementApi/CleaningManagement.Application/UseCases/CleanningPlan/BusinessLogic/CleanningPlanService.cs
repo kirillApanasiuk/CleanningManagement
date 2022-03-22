@@ -2,6 +2,7 @@
 using CleaningManagement.Application.UseCases.CleanningPlan.DTOs;
 using CleaningManagement.Domain.Entities;
 using CleanningManagement.Infrastructure.Data.DbContexts;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleaningManagement.Application
@@ -9,15 +10,29 @@ namespace CleaningManagement.Application
     public class CleanningPlanService : ICleanningPlanService
     {
         private readonly CleanningManagementDbContext _cleanningManagementDbContext;
+        private readonly IValidator<CreateCleanningPlanDto> _createCleanningPlanValidator;
+        private readonly IValidator<UpdateCleanningPlanDto> _updateCleanningPlanValidator;
 
-        public CleanningPlanService(CleanningManagementDbContext cleanningManagementDbContext)
+        public CleanningPlanService(
+            CleanningManagementDbContext cleanningManagementDbContext,
+            IValidator<CreateCleanningPlanDto> createCleanningPlanValidator,
+            IValidator<UpdateCleanningPlanDto> updateCleanningPlanValidator
+            )
         {
             _cleanningManagementDbContext = cleanningManagementDbContext;
+            _createCleanningPlanValidator = createCleanningPlanValidator;
+            _updateCleanningPlanValidator = updateCleanningPlanValidator;
         }
 
         public async Task<CleanningPlanDto> CreateCleanningPlanAsync(CreateCleanningPlanDto createCleanningPlanDto)
         {
-            //TODO add validation rules for creating Entity
+            var validationResult = _createCleanningPlanValidator.Validate(createCleanningPlanDto);
+
+            if (!validationResult.IsValid)
+            {
+                //TODO
+                return null;
+            }
 
             var newCleanningPlan = new CleanningPlan
             {
@@ -75,8 +90,17 @@ namespace CleaningManagement.Application
         public async Task<CleanningPlanDto> UpdateCleanningPlan(UpdateCleanningPlanDto updateCleanningPlanDto)
         {
 
-            //TODO validation
-            var cleanningPlan = await _cleanningManagementDbContext.CleanningPlans.AsTracking().FirstOrDefaultAsync(x => x.Id == updateCleanningPlanDto.Id);
+            var validationResult = _updateCleanningPlanValidator.Validate(updateCleanningPlanDto);
+            if (!validationResult.IsValid)
+            {
+                return null;
+            }
+            
+            var cleanningPlan = await _cleanningManagementDbContext
+                .CleanningPlans
+                .AsTracking()
+                .FirstOrDefaultAsync(x => x.Id == updateCleanningPlanDto.Id);
+
             if (cleanningPlan == null)
                 new CleanningPlanDto();
 

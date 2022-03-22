@@ -42,7 +42,6 @@ namespace CleaningManagement.Api.Controllers
 
             return Ok(cleanningPlanDto);
         }
-
         [HttpPost]
         public async Task<IActionResult> CreateCleanningPlan([FromBody] CreateCleanningPlanDto createCleanningPlanDto) 
         {

@@ -9,7 +9,8 @@ namespace CleanningManagement.Infrastructure.Data.DbContexts
 
     {
         public DbSet<CleanningPlan> CleanningPlans { get; set; }
-        public CleanningManagementDbContext(DbContextOptions<CleanningManagementDbContext> options) : base(options)
+        public CleanningManagementDbContext(DbContextOptions<CleanningManagementDbContext> options)
+            : base(options)
         {
         }
 

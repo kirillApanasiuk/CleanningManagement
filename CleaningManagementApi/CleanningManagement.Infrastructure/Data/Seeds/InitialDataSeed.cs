@@ -11,7 +11,7 @@ namespace CleanningManagement.Infrastructure.Data.Seeds
             modelBuilder.Entity<CleanningPlan>().HasData(
                 new CleanningPlan
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.Parse("183eef1f-e4eb-489d-bd3d-720443bce7c2"),
                     CustomerId = 1,
                     Description = "Simple cleanning plan",
                     CreatedAt = DateTime.Now,

@@ -7,6 +7,9 @@ using Microsoft.OpenApi.Models;
 using CleanningManagement.Infrastructure.Data.DbContexts;
 using CleaningManagement.Application;
 using CleaningManagement.Application.UseCases.CleanningPlan.BusinessLogic;
+using FluentValidation.AspNetCore;
+using System.Reflection;
+using CleaningManagement.Application.UseCases.CleanningPlan.ValidationRules.CleanningPlan;
 
 namespace CleaningManagement.Api
 {
@@ -22,7 +25,12 @@ namespace CleaningManagement.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers()
+                .AddFluentValidation(fv => {
+                    fv.RegisterValidatorsFromAssemblyContaining<CreateCleanningPlanValidator>();
+                    fv.RegisterValidatorsFromAssemblyContaining<UpdateCleanningPlanValidator>();
+                }
+               );
 
             services.AddSwaggerGen(options =>
             {
@@ -38,7 +46,7 @@ namespace CleaningManagement.Api
 
             services.AddDbContext<CleanningManagementDbContext>(opts =>
                 opts.UseSqlServer(Configuration.GetConnectionString("SqlServerDbProviderCMDataBase"),
-                x => x.MigrationsAssembly("CleanningManagement.DAL"))
+                x => x.MigrationsAssembly("CleanningManagement.Infrastructure"))
                 .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
                 );
         }
