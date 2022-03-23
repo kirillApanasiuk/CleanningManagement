@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleaningManagement.Application
 {
+    /// <summary>
+    /// Business logic for working with cleanning plans
+    /// </summary>
     public class CleanningPlanService : ICleanningPlanService
     {
         private readonly CleanningManagementDbContext _cleanningManagementDbContext;
@@ -18,7 +21,11 @@ namespace CleaningManagement.Application
         {
             _cleanningManagementDbContext = cleanningManagementDbContext;
         }
-
+        /// <summary>
+        /// Create cleanning plan
+        /// </summary>
+        /// <param name="createCleanningPlanDto"></param>
+        /// <returns></returns>
         public async Task<CleanningPlanDto> CreateAsync(CreateCleanningPlanDto createCleanningPlanDto)
         {
             var newCleanningPlan = new CleanningPlan
@@ -43,6 +50,11 @@ namespace CleaningManagement.Application
             return cleanningPlanDto;
         }
 
+        /// <summary>
+        /// Delete Cleanning plan
+        /// </summary>
+        /// <param name="cleanningPlanId"></param>
+        /// <returns></returns>
         public async Task<bool> DeleteAsync(Guid cleanningPlanId)
         {
             var cleanningPlan = await _cleanningManagementDbContext.CleanningPlans
@@ -59,6 +71,11 @@ namespace CleaningManagement.Application
             return true;
         }
 
+        /// <summary>
+        /// Get cleanning plans by customer id
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<CleanningPlanDto>> GetByCustomerIdAsync(int customerId)
         {
             var plansDtos = await _cleanningManagementDbContext.CleanningPlans
@@ -75,6 +92,13 @@ namespace CleaningManagement.Application
 
             return plansDtos;
         }
+
+        /// <summary>
+        /// Update cleanning plan
+        /// </summary>
+        /// <param name="updateCleanningPlanDto"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
 
         public async Task<CleanningPlanDto> Update(UpdateCleanningPlanDto updateCleanningPlanDto)
         {

@@ -2,7 +2,6 @@
 using CleaningManagement.Application.UseCases.CleanningPlan.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 using System;
 using System.Threading.Tasks;
 
@@ -24,7 +23,7 @@ namespace CleaningManagement.Api.Controllers
         /// <param name="customerId"></param>
         /// <returns>List of cleanning plans</returns>
 
-        [HttpGet("/api/customers/{customerId}/plans")]
+        [HttpGet("getByCustomerId/{customerId}")]
         public async Task<IActionResult> GetPlansByCustomerId(int customerId)
         {
             var plansDtos = await _cleanningPlanService.GetByCustomerIdAsync(customerId);
@@ -33,19 +32,31 @@ namespace CleaningManagement.Api.Controllers
         }
 
         /// <summary>
-        /// Delete cleanning plan by given id
+        /// Create cleanning plan
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(Guid id)
+        /// <param name="createCleanningPlanDto"></param>
+        /// <returns>A newly created cleanning plan</returns>
+        /// <remarks>
+        /// Sample request:
+        ///
+        ///     POST 
+        ///     {
+        ///        "title": "Title for testing purposes",
+        ///        "customerId": 2,
+        ///        "description": "description text"
+        ///     }
+        ///</remarks>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Create([FromBody] CreateCleanningPlanDto createCleanningPlanDto)
         {
-            var result = await _cleanningPlanService.DeleteAsync(id);
 
-            return Ok(result);
+            var resultDto = await _cleanningPlanService.CreateAsync(createCleanningPlanDto);
+            return Ok(resultDto);
         }
-
 
         /// <summary>
         /// Update cleanning plan
@@ -78,30 +89,17 @@ namespace CleaningManagement.Api.Controllers
         }
 
         /// <summary>
-        /// Create cleanning plan
+        /// Delete cleanning plan by given id
         /// </summary>
-        /// <param name="createCleanningPlanDto"></param>
-        /// <returns>A newly created cleanning plan</returns>
-        /// <remarks>
-        /// Sample request:
-        ///
-        ///     POST 
-        ///     {
-        ///        "title": "Title for testing purposes",
-        ///        "customerId": 2,
-        ///        "description": "description text"
-        ///     }
-        ///</remarks>
-        /// <response code="201">Returns the newly created item</response>
-        /// <response code="400">If the item is null</response>
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Create([FromBody] CreateCleanningPlanDto createCleanningPlanDto)
-        {
+        /// <param name="id"></param>
+        /// <returns></returns>
 
-            var resultDto = await _cleanningPlanService.CreateAsync(createCleanningPlanDto);
-            return Ok(resultDto);
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var result = await _cleanningPlanService.DeleteAsync(id);
+
+            return Ok(result);
         }
     }
 }

@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanningManagement.Infrast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleaningManagement.Application", "CleaningManagement.Application\CleaningManagement.Application.csproj", "{E6D18D3B-625B-41CF-AB4E-058713606D29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanningManagement.Api.UnitTests", "CleanningManagement.Api.UnitTests\CleanningManagement.Api.UnitTests.csproj", "{035EED42-DCB6-411C-943D-98EAC0394A59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanningManagement.Tests", "CleanningManagement.Api.UnitTests\CleanningManagement.Tests.csproj", "{035EED42-DCB6-411C-943D-98EAC0394A59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanningManagement.Resources", "CleanningManagement.Resources\CleanningManagement.Resources.csproj", "{FCD4B275-12E1-4F94-B319-0F680D4D6CC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanningManagement.Resources", "CleanningManagement.Resources\CleanningManagement.Resources.csproj", "{FCD4B275-12E1-4F94-B319-0F680D4D6CC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
